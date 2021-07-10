@@ -1,19 +1,31 @@
 {
-  "name": "mongoose_skeleton",
+  "name": "fitness-tracker",
   "version": "1.0.0",
-  "description": "",
+  "description": "fitness tracker using mongodb and express",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "watch": "nodemon server.js",
-    "seed": "node seeders/seed.js"
+    "start": "node server.js"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a-ukp/fitness-tracker.git"
+  },
+  "keywords": [
+    "mongodb",
+    "express",
+    "mongoose",
+    "logger"
+  ],
+  "author": "Anna K. Phung",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/a-ukp/fitness-tracker/issues"
+  },
+  "homepage": "https://github.com/a-ukp/fitness-tracker#readme",
   "dependencies": {
-    "express": "^4.16.3",
-    "mongoose": "^5.3.16",
-    "morgan": "^1.9.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.13.2",
+    "morgan": "^1.10.0"
   }
 }
