@@ -19,6 +19,7 @@ app.use(express.static('public'));
 // app.use(require('./routes/api'));
 app.use(require('./routes/view'));
 
+// adding process.env.PORT here solved heroku error H10
 app.listen(process.env.PORT || PORT, () => {
     console.log(`Listening on port ${PORT}...`);
 });
