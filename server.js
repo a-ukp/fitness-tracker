@@ -1,6 +1,6 @@
 const express = require('express');
 const logger = require('morgan');
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 const PORT = 5000;
 const app = express();
@@ -16,7 +16,17 @@ app.use(express.static('public'));
 //   useUnifiedTopology: true,
 // });
 
-// app.use(require('./routes/api'));
+mongoose.connect(
+    process.env.MONGODB_URI || 'mongodb://localhost/workout',
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false
+    }
+  );
+
+app.use(require('./routes/api'));
 app.use(require('./routes/view'));
 
 // adding process.env.PORT here solved heroku error H10
