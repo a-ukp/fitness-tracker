@@ -1,9 +1,9 @@
-const db = require('../models');
+const Workout = require('../models/Workout');
 const router = require('express').Router();
 
 // get workouts
 router.get('/api/workouts', (req, res) => {
-    db.Workout.find({}).then(dbWorkout => {
+    Workout.find({}).then(dbWorkout => {
         dbWorkout.forEach(workout => {
             var total = 0;
             workout.exercises.forEach(e => {
@@ -21,7 +21,7 @@ router.get('/api/workouts', (req, res) => {
 
 // add exercise
 router.put('/api/workouts/:id', (req, res) => {
-    db.Workout.findOneAndUpdate(
+    Workout.findOneAndUpdate(
         { _id: req.params.id },
         {
             $inc: { totalDuration: req.body.duration },
@@ -36,7 +36,7 @@ router.put('/api/workouts/:id', (req, res) => {
 
 // create workout
 router.post('/api/workouts', (req, res) => {
-    db.Workout.create({}).then((dbWorkout => {
+    Workout.create({}).then((dbWorkout => {
         res.json(dbWorkout);
     })).catch(err => {
         res.json(err);
@@ -45,7 +45,7 @@ router.post('/api/workouts', (req, res) => {
 
 // get workout in range
 router.get('/api/workouts/range', (req, res) => {
-    db.Workout.aggregate([
+    Workout.aggregate([
         {
             $addFields: { totalDuration: { $sum: '$exercises.duration'} },
         }
